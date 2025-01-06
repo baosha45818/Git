@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
  * @date 2025-01-06 上午9:53:37
  */
 @Controller
-@RestController
+@RestController(value = "/about")
+@RequestMapping("/about")
 public class Rest {
 
     @GetMapping("/info")
