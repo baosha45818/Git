@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController(value = "/about")
 @RequestMapping("/about")
 public class Rest {
+    //123123
 
     @GetMapping("/info")
     public String info(String infoDto) {
