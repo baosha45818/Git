@@ -16,11 +16,8 @@ import java.sql.Statement;
 @RequestMapping("/about")
 public class Rest {
 
-
     @GetMapping("/info")
     public String info(String infoDto) throws SQLException {
-
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
 
             if (infoDto == null || infoDto.isEmpty()) {
                 infoDto = "{\"info\":\"\"}";
