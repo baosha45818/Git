@@ -2,6 +2,11 @@ package org.pocket.web.server;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * @author lyh
  * @version 1.0.0
@@ -10,14 +15,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController(value = "/about")
 @RequestMapping("/about")
 public class Rest {
-    //123123
+
 
     @GetMapping("/info")
-    public String info(String infoDto) {
-        if(infoDto == null || infoDto.isEmpty()){
-            infoDto = "{\"info\":\"\"}";
-        }
-        return infoDto;
-    }
+    public String info(String infoDto) throws SQLException {
 
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
+
+            if (infoDto == null || infoDto.isEmpty()) {
+                infoDto = "{\"info\":\"\"}";
+            }
+            return infoDto;
+
+    }
 }
