@@ -8,6 +8,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 @Component
@@ -28,5 +29,12 @@ public class DatabaseInitializer {
         }
         Connection connection = DriverManager.getConnection(databaseUrl);
         System.out.println("成功建立数据库连接" + databaseUrl);
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS files (" +
+                "file_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "file_name TEXT NOT NULL, " +
+                "file_data )" ;
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(createTableSQL);
+
     }
 }
